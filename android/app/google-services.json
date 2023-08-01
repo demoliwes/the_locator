@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "869806603553",
+    "project_id": "the-locator-5198f",
+    "storage_bucket": "the-locator-5198f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869806603553:android:5c625470f4a094517e1260",
+        "android_client_info": {
+          "package_name": "com.example.the_locator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869806603553-bncmjb8n2tcbvjba1v8388m75ahghj32.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6ONN3K4Sjc0GQpkVn3x16fh5H8IRwi4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869806603553-bncmjb8n2tcbvjba1v8388m75ahghj32.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
