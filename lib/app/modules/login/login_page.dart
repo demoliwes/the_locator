@@ -5,7 +5,11 @@ import 'login_bloc.dart';
 class LoginPage extends StatefulWidget {
   final LoginBloc controller;
 
+  @override
   LoginPage({Key? key, required this.controller}) : super(key: key);
+  void initState() {
+    controller.onInit();
+  }
 
   String email = '';
   String password = '';

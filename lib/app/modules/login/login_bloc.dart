@@ -5,10 +5,6 @@ import 'package:flutter_modular/flutter_modular.dart' show Disposable;
 class LoginBloc extends Disposable {
   late FirebaseAuth authenticationInstance;
 
-  LoginBloc() {
-    onInit();
-  }
-
   void onInit() async {
     authenticationInstance = FirebaseAuth.instance;
   }
