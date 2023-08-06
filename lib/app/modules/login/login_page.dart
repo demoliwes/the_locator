@@ -11,12 +11,12 @@ class LoginPage extends StatefulWidget {
     controller.onInit();
   }
 
-  String email = '';
-  String password = '';
+  // String email = '';
+  // String password = '';
   bool isLogin = false;
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
 
   changeIsLogin() {
     isLogin = !isLogin;
@@ -27,6 +27,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  @override
+  void initState() {
+    super.initState();
+    widget.controller.onInit(); // Initialize the controller here
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +52,8 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
-                        controller: widget._emailController,
+                        // controller: widget._emailController,
+                        onChanged: widget.controller.changeEmail,
                         decoration: const InputDecoration(
                           labelText: 'Email',
                           hintText: 'Enter your email',
@@ -63,7 +70,8 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       TextFormField(
                         obscureText: true,
-                        controller: widget._passwordController,
+                        // controller: widget._passwordController,
+                        onChanged: widget.controller.changePassword,
                         decoration: const InputDecoration(
                           labelText: 'Password',
                           hintText: 'Your very secure password goes in here',
@@ -81,9 +89,6 @@ class _LoginPageState extends State<LoginPage> {
                       ElevatedButton(
                         onPressed: () async {
                           bool success = await widget.controller.handleSubmit(
-                            widget._formKey,
-                            widget._emailController,
-                            widget._passwordController,
                             widget.isLogin,
                           );
                           // Handle the success value as needed
