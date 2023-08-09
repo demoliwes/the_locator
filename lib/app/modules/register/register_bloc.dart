@@ -3,10 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart' show Disposable;
 import 'package:go_router/go_router.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:the_locator/config/page_names.dart';
 
-class LoginBloc extends Disposable {
+class RegisterBloc extends Disposable {
   late FirebaseAuth authenticationInstance;
 
   @override
@@ -26,26 +25,16 @@ class LoginBloc extends Disposable {
   Function(String) get changeEmail => _emailController.sink.add;
   Function(String?) get changePassword => _passwordController.sink.add;
 
-  Future<bool> emailAndPasswordSignIn() async {
+  Future<bool> emailAndPasswordRegistration() async {
     try {
-      await authenticationInstance.signInWithEmailAndPassword(
+      await authenticationInstance.createUserWithEmailAndPassword(
         email: email!,
         password: password!,
       );
 
-      User? user = authenticationInstance.currentUser;
-
-      if (user != null) {
-        String? idToken = await user.getIdToken();
-        if (idToken != null) {
-          SharedPreferences prefs = await SharedPreferences.getInstance();
-
-          prefs.setString('accessToken', idToken);
-          return true;
-        }
-      }
-      return false;
+      return true;
     } catch (e) {
+      print(e);
       return false;
     }
   }
@@ -58,19 +47,15 @@ class LoginBloc extends Disposable {
   }
 
   void handleSubmit(BuildContext context) async {
+    //TODO create password and email regex verification
     bool successfullLogin;
     if (email != null && password != null) {
-      if (isEmailValid(email!)) {
-        successfullLogin = await emailAndPasswordSignIn();
-      } else {
-        //TODO add invalid email exception
-        successfullLogin = false;
-      }
+      successfullLogin = await emailAndPasswordRegistration();
     } else {
       successfullLogin = false;
     }
     if (successfullLogin && context.mounted) {
-      context.go(RouteNames.mainPage);
+      context.go(RouteNames.loginPage);
     }
   }
 
@@ -78,6 +63,5 @@ class LoginBloc extends Disposable {
   void dispose() {
     _emailController.close();
     _passwordController.close();
-    // TODO: implement disposes
   }
 }

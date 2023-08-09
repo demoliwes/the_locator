@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:the_locator/config/page_names.dart';
 
 import 'login_bloc.dart';
 
@@ -88,21 +90,19 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       ElevatedButton(
                         onPressed: () async {
-                          bool success = await widget.controller.handleSubmit(
-                            widget.isLogin,
-                          );
+                          widget.controller.handleSubmit(context);
                           // Handle the success value as needed
                         },
-                        child: Text(widget.isLogin ? 'Log-in' : 'Register'),
+                        child: const Text('Log-in'),
                       ),
                       InkWell(
                           onTap: () {
                             setState(() {
-                              widget.changeIsLogin();
+                              context.go(RouteNames.register);
                             });
                           },
-                          child: Text(
-                            widget.isLogin ? 'Create an account' : "Log-in",
+                          child: const Text(
+                            'Register',
                           ))
                     ]))
           ],

@@ -9,7 +9,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(MaterialApp.router(
+    // routerDelegate: AppRouterDelegate(),
+    routerConfig: AppRouter().router,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -19,12 +22,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      routerConfig: AppRouter().router,
     );
   }
 }
