@@ -38,7 +38,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsetsDirectional.symmetric(horizontal: 24),
         child: Column(
@@ -98,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                       InkWell(
                           onTap: () {
                             setState(() {
-                              context.go(RouteNames.register);
+                              context.push(RouteNames.register);
                             });
                           },
                           child: const Text(

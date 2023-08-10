@@ -9,10 +9,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MaterialApp.router(
-    // routerDelegate: AppRouterDelegate(),
-    routerConfig: AppRouter().router,
-  ));
+  runApp(
+    MaterialApp.router(
+      // routerDelegate: AppRouterDelegate(),
+      routerConfig: AppRouter().router,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -42,6 +42,7 @@ dependencies:
   rxdart: ^0.27.7
   http: ^0.13.6
   shared_preferences: ^2.2.0
+  font_awesome_flutter: ^10.4.0
 
 dev_dependencies:
   flutter_test:
